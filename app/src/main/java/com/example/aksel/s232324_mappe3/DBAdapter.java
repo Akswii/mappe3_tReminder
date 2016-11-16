@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class DBAdapter {
+    // okei!?
     static final String TAG="";
     static final String DB_NAVN="Treningsdagbok";
     static final String TABELL="Persliste";
