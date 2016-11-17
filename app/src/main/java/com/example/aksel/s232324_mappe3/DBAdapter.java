@@ -2,6 +2,7 @@ package com.example.aksel.s232324_mappe3;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -68,4 +69,17 @@ public class DBAdapter {
     }
 
     public boolean oppdater(){return false;}
+
+    public Cursor finnalle(){
+        Cursor cur;
+        String[] cols={ADRESSE,TDAG,TMAANED};
+        cur = db.query(TABELL, cols,null,null,null,null,null);
+        return cur;
+    }
+
+    public Cursor finndag(int i){
+        Cursor cur;
+        String[] cols = {ADRESSE, TDAG, TMAANED};
+        return db.query(TABELL, cols, ID + "='" + i + "'", null, null, null, null);
+    }
 }
