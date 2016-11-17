@@ -42,7 +42,7 @@ public class DBAdapter {
                     + ADRESSE + " TEXT, "
                     + TDAG + " TEXT, "
                     + TMAANED + " TEXT, "
-                    + TAAR + " TEXT)"; //kanskje fjerne år, siden jeg tenker at de kun kan lage plan for en uke
+                    + TAAR + " TEXT)"; //kanskje fjerne år/ sette standard år til nåværende år
             db.execSQL(sql);
         }
 
@@ -68,7 +68,13 @@ public class DBAdapter {
         return db.delete(TABELL, ID + "='" + id + "'", null) > 0;
     }
 
-    public boolean oppdater(){return false;}
+    public boolean oppdater(String tsenter, String dag, String maaned, int iden){
+        ContentValues cv = new ContentValues();
+        cv.put(ADRESSE, tsenter);
+        cv.put(TDAG, dag);
+        cv.put(TMAANED, maaned);
+        return db.update(TABELL,cv,ID+"="+"'"+iden+"'",null)>0;
+    }
 
     public Cursor finnalle(){
         Cursor cur;
