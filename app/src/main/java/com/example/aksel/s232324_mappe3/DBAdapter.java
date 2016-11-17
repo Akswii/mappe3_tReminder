@@ -67,5 +67,5 @@ public class DBAdapter {
         return db.delete(TABELL, ID + "='" + id + "'", null) > 0;
     }
 
-    public boolean oppdater(String )
+    public boolean oppdater(){return false;}
 }
