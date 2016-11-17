@@ -14,8 +14,7 @@ public class DBAdapter {
     static final String TAG="";
     static final String DB_NAVN="Treningsdagbok";
     static final String TABELL="Persliste";
-    static final String FORNAVN="fornavn";
-    static final String ETTERNAVN="etternavn";
+    static final String ADRESSE="adresse";
     static final String TDAG="dag", TMAANED="maaned", TAAR="aar";
     static final String ID="id";
     static final int DB_VERSJON=1;
@@ -38,11 +37,10 @@ public class DBAdapter {
         public void onCreate(SQLiteDatabase db) {
             String sql="CREATE TABLE " + TABELL + "("
                     + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + FORNAVN + " TEXT, "
-                    + ETTERNAVN + " TEXT, "
+                    + ADRESSE + " TEXT, "
                     + TDAG + " TEXT, "
                     + TMAANED + " TEXT, "
-                    + TAAR + " TEXT)";
+                    + TAAR + " TEXT)"; //kanskje fjerne år, siden jeg tenker at de kun kan lage plan for en uke
             db.execSQL(sql);
         }
 
@@ -67,4 +65,6 @@ public class DBAdapter {
     public boolean slett(int id){
         return db.delete(TABELL, ID + "='" + id + "'", null) > 0;
     }
+
+    public boolean oppdater(String )
 }
