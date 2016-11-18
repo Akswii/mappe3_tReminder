@@ -10,7 +10,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.aksel.s232324_mappe3.MainActivity">
 
-    <LinearLayout
+    <GridView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:id="@+id/ukesview"
+        android:columnWidth="90dp"
+        android:numColumns="auto_fit"></GridView>
 </RelativeLayout>
