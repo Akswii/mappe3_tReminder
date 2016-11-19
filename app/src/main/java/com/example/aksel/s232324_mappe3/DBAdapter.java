@@ -68,7 +68,7 @@ public class DBAdapter {
         return db.delete(TABELL, ID + "='" + id + "'", null) > 0;
     }
 
-    public boolean oppdater(String tsenter, String dag, String maaned, int iden){
+    public boolean oppdaterDag(String tsenter, String dag, String maaned, int iden){
         ContentValues cv = new ContentValues();
         cv.put(ADRESSE, tsenter);
         cv.put(TDAG, dag);
@@ -76,7 +76,7 @@ public class DBAdapter {
         return db.update(TABELL,cv,ID+"="+"'"+iden+"'",null)>0;
     }
 
-    public Cursor finnalle(){
+    public Cursor visalleDager(){
         Cursor cur;
         String[] cols={ADRESSE,TDAG,TMAANED};
         cur = db.query(TABELL, cols,null,null,null,null,null);

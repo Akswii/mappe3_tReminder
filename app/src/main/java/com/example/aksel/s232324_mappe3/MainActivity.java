@@ -11,7 +11,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        DBAdapter db = new DBAdapter(this);
+        db.open();
+
         GridView gridView = (GridView) findViewById(R.id.ukesview);
+
 
     }
 }
