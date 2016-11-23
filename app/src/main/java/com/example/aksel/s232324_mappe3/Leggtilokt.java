@@ -1,5 +1,6 @@
 package com.example.aksel.s232324_mappe3;
 
+import android.content.ContentValues;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,7 @@ public class Leggtilokt extends AppCompatActivity {
     private int dag, maaned;
     private Button lagre;
     private EditText okt;
+    private DBAdapter db;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,6 +32,9 @@ public class Leggtilokt extends AppCompatActivity {
         getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.trening_ikon);
+
+        db = new DBAdapter(this);
+        db.open();
 
         valg = (TimePicker) findViewById(R.id.klokkeValg);
         valg.setIs24HourView(true);
@@ -47,7 +52,14 @@ public class Leggtilokt extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch(item.getItemId()){
             case R.id.lagreokten:
-                String treningsokt = okt.getText().toString();
+                dag = dato.getDayOfMonth();
+                maaned = dato.getMonth();
+
+                ContentValues cv = new ContentValues();
+                cv.put(db.TDAG,dag);
+                cv.put(db.TMAANED, maaned);
+                db.insert(cv);
+                //må sendes tilbake til hovedside, med oppdatert view
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
