@@ -20,5 +20,4 @@
         android:calendarViewShown="false"
         android:datePickerMode="spinner"
         android:layout_gravity="center"/>
-
 </LinearLayout>
