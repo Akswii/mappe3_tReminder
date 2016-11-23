@@ -40,7 +40,7 @@ public class DBAdapter {
         public void onCreate(SQLiteDatabase db) {
             String sql="CREATE TABLE " + TABELL + "("
                     + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    //+ KROPPSDEL + " TEXT, " hvordan skal jeg lagre dette? db eller skrive til fil
+                    //+ KROPPSDEL + " TEXT, " hvordan skal jeg lagre dette? db eller skrive til fil, SPØRRE (!)
                     + ADRESSE + " TEXT, "
                     + TDAG + " TEXT, "
                     + TMAANED + " TEXT, "

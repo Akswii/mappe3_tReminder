@@ -8,12 +8,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/okt_navn"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:maxLength="20"/>
     <TimePicker
         android:id="@+id/klokkeValg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"></TimePicker>
+        android:layout_gravity="center"/>
     <DatePicker
         android:id="@+id/datoValg"
         android:layout_width="wrap_content"

@@ -8,6 +8,4 @@
         android:id="@+id/lagreokten"
         app:showAsAction="always"
         android:title="LAGRE"/>
-
-
 </menu>
