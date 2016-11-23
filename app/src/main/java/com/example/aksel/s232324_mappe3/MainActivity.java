@@ -16,6 +16,5 @@ public class MainActivity extends AppCompatActivity {
 
         GridView gridView = (GridView) findViewById(R.id.ukesview);
 
-
     }
 }

@@ -25,6 +25,7 @@ public class Leggtilokt extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.leggtil_layout);
+        getSupportActionBar().setTitle("");
 
         valg = (TimePicker) findViewById(R.id.klokkeValg);
         valg.setIs24HourView(true);
