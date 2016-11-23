@@ -9,11 +9,16 @@
         android:hint="@string/okt_navn"
         android:textAlignment="center"/>
     <TimePicker
+        android:id="@+id/klokkeValg"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></TimePicker>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"></TimePicker>
     <DatePicker
         android:id="@+id/datoValg"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        android:layout_gravity="center"/>
 
 </LinearLayout>
