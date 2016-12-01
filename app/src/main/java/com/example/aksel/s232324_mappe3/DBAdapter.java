@@ -12,12 +12,11 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class DBAdapter {
-    // okei!?
     static final String TAG="";
     static final String DB_NAVN="Treningsdagbok";
     static final String TABELL="Persliste";
     static final String ADRESSE="adresse";
-    //static final String KROPPSDEL = "kroppsdel";
+    static final String KROPPSDEL = "kroppsdel";
     static final String TDAG="dag", TMAANED="maaned", TAAR="aar";
     static final String ID="id";
     static final int DB_VERSJON=1;
@@ -40,7 +39,7 @@ public class DBAdapter {
         public void onCreate(SQLiteDatabase db) {
             String sql="CREATE TABLE " + TABELL + "("
                     + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    //+ KROPPSDEL + " TEXT, " hvordan skal jeg lagre dette? db eller skrive til fil, SPØRRE (!)
+                    + KROPPSDEL + " TEXT, "
                     + ADRESSE + " TEXT, "
                     + TDAG + " TEXT, "
                     + TMAANED + " TEXT, "
