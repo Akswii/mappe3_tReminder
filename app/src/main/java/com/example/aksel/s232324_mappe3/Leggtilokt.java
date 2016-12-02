@@ -46,7 +46,7 @@ public class Leggtilokt extends AppCompatActivity {
         dato = (DatePicker) findViewById(R.id.datoValg);
         lagre = (Button) findViewById(R.id.lagreokten);
 
-        /*try {
+        /*try { //for å fjerne år fra datepicker
             Log.d("test", "test");
             Field f[] = dato.getClass().getDeclaredFields();
             for (Field field : f) {
