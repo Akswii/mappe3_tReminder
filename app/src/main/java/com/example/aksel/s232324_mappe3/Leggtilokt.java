@@ -35,7 +35,6 @@ public class Leggtilokt extends AppCompatActivity {
         setContentView(R.layout.leggtil_layout);
         getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setIcon(R.mipmap.trening_ikon);
 
         db = new DBAdapter(this);
         db.open();
@@ -44,28 +43,8 @@ public class Leggtilokt extends AppCompatActivity {
         valg.setIs24HourView(true);
         okt = (EditText) findViewById(R.id.okt);
         dato = (DatePicker) findViewById(R.id.datoValg);
+        dato.setMinDate(System.currentTimeMillis() - 1000);
         lagre = (Button) findViewById(R.id.lagreokten);
-
-        /*try { //for å fjerne år fra datepicker
-            Log.d("test", "test");
-            Field f[] = dato.getClass().getDeclaredFields();
-            for (Field field : f) {
-                if (field.getName().equals("mMonthPicker")) {
-                    Log.d("test", "test");
-                    field.setAccessible(true);
-                    Object yearPicker = new Object();
-                    yearPicker = field.get(dato);
-                    ((View) yearPicker).setVisibility(View.GONE);
-                }
-            }
-        } catch (SecurityException e) {
-            Log.d("ERROR", e.getMessage());
-        }
-        catch (IllegalArgumentException e) {
-            Log.d("ERROR", e.getMessage());
-        } catch (IllegalAccessException e) {
-            Log.d("ERROR", e.getMessage());
-        }*/
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -84,7 +63,6 @@ public class Leggtilokt extends AppCompatActivity {
                 cv.put(db.TDAG,dag);
                 cv.put(db.TMAANED, maaned);
                 db.insert(cv);
-                //må sendes tilbake til hovedside, med oppdatert view
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

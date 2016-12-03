@@ -1,5 +1,7 @@
 package com.example.aksel.s232324_mappe3;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -17,7 +19,6 @@ import android.widget.GridView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,13 +50,14 @@ public class MainActivity extends AppCompatActivity {
         final ArrayAdapter<String> gridViewArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, dagListe);
 
         gridView.setAdapter(gridViewArrayAdapter);
+        final ArrayList<Integer> tallListe = new ArrayList<Integer>();
 
         Cursor cur = db.visalleDager();
         if(cur.moveToFirst()){
             do {
-                dagListe.add(dagListe.size(), cur.getString(2) + "." + getMnd(Integer.parseInt(cur.getString(3))) /*+ " " + cur.getString(1)*/);
+                dagListe.add(dagListe.size(), cur.getString(2) + "." + getMnd(cur.getInt(3)) /*+ " " + cur.getString(1)*/);
                 gridViewArrayAdapter.notifyDataSetChanged();
-                //tallListe.add(cur.getInt(6));
+                tallListe.add(cur.getInt(4));
             }while(cur.moveToNext());
         }
         cur.close();
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this, Endredag.class);
-                //intent.putExtra("Posnr", tallListe.get(position));
+                intent.putExtra("Posnr", tallListe.get(position));
                 startActivity(intent);
             }
         });

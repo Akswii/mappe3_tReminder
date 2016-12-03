@@ -79,7 +79,7 @@ public class DBAdapter {
 
     public Cursor visalleDager(){
         Cursor cur;
-        String[] cols={KROPPSDEL,ADRESSE,TDAG,TMAANED};
+        String[] cols={KROPPSDEL,ADRESSE,TDAG,TMAANED,ID};
         cur = db.query(TABELL, cols,null,null,null,null,TMAANED + " , " + TDAG);
         return cur;
     }
