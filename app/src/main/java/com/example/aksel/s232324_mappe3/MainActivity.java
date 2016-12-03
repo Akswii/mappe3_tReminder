@@ -34,14 +34,16 @@ public class MainActivity extends AppCompatActivity {
         DBAdapter db = new DBAdapter(this);
         db.open();
 
-        /*ContentValues cv = new ContentValues();
+        ContentValues cv = new ContentValues();
         cv.put(db.KROPPSDEL, "kasse");
         cv.put(db.ADRESSE, "..");
         cv.put(db.TDAG, 02);
         cv.put(db.TMAANED, 11);
         cv.put(db.TAAR, 2016);
+        cv.put(db.TIMEN, 10);
+        cv.put(db.MINUTT, 10);
 
-        db.insert(cv);*/
+        db.insert(cv);
 
         GridView gridView = (GridView) findViewById(R.id.ukesview);
 
@@ -54,9 +56,9 @@ public class MainActivity extends AppCompatActivity {
         Cursor cur = db.visalleDager();
         if(cur.moveToFirst()){
             do {
-                dagListe.add(dagListe.size(), cur.getString(2) + "." + getMnd(cur.getInt(3)));
+                dagListe.add(dagListe.size(), cur.getString(1) + "." + getMnd(cur.getInt(2)));
                 gridViewArrayAdapter.notifyDataSetChanged();
-                tallListe.add(cur.getInt(4));
+                tallListe.add(cur.getInt(3));
             }while(cur.moveToNext());
         }
         cur.close();

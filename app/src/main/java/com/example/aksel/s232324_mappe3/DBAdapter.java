@@ -17,7 +17,7 @@ public class DBAdapter {
     static final String TABELL="Persliste";
     static final String ADRESSE="adresse";
     static final String KROPPSDEL = "kroppsdel";
-    static final String TDAG="dag", TMAANED="maaned", TAAR="aar";
+    static final String TDAG="dag", TMAANED="maaned", TAAR="aar", TIMEN="time", MINUTT="minutt";
     static final String ID="id";
     static final int DB_VERSJON=1;
 
@@ -40,6 +40,8 @@ public class DBAdapter {
             String sql="CREATE TABLE " + TABELL + "("
                     + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + KROPPSDEL + " TEXT, "
+                    + TIMEN + " TEXT ,"
+                    + MINUTT + " TEXT ,"
                     + ADRESSE + " TEXT, "
                     + TDAG + " TEXT, "
                     + TMAANED + " TEXT, "
@@ -79,14 +81,14 @@ public class DBAdapter {
 
     public Cursor visalleDager(){
         Cursor cur;
-        String[] cols={KROPPSDEL,ADRESSE,TDAG,TMAANED,ID};
+        String[] cols={KROPPSDEL,TDAG,TMAANED,ID};
         cur = db.query(TABELL, cols,null,null,null,null,TMAANED + " , " + TDAG);
         return cur;
     }
 
     public Cursor finndag(int i){
         Cursor cur;
-        String[] cols = {ADRESSE, TDAG, TMAANED};
+        String[] cols = {KROPPSDEL, TIMEN, MINUTT, TDAG, TMAANED, TAAR};
         return db.query(TABELL, cols, ID + "='" + i + "'", null, null, null, null);
     }
 }
