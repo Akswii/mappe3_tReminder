@@ -9,12 +9,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,19 +53,32 @@ public class MainActivity extends AppCompatActivity {
         Cursor cur = db.visalleDager();
         if(cur.moveToFirst()){
             do {
-                dagListe.add(dagListe.size(), cur.getString(2) + "" /*+ " " + cur.getString(1)*/);
+                dagListe.add(dagListe.size(), cur.getString(2) + "." + getMnd(Integer.parseInt(cur.getString(3))) /*+ " " + cur.getString(1)*/);
                 gridViewArrayAdapter.notifyDataSetChanged();
                 //tallListe.add(cur.getInt(6));
-                Log.d("Testy", "test");
             }while(cur.moveToNext());
         }
         cur.close();
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, Endredag.class);
+                //intent.putExtra("Posnr", tallListe.get(position));
+                startActivity(intent);
+            }
+        });
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.hoved_meny,menu);
         return true;
+    }
+
+    public String getMnd(int m){
+        String[] maaned = {"januar","februar","mars","april","mai","juni","juli","august","september","oktober","november","desember"};
+        return maaned[m];
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
