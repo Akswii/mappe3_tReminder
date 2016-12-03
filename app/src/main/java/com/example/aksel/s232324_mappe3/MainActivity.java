@@ -3,6 +3,7 @@ package com.example.aksel.s232324_mappe3;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
@@ -33,18 +34,16 @@ public class MainActivity extends AppCompatActivity {
         DBAdapter db = new DBAdapter(this);
         db.open();
 
-        ContentValues cv = new ContentValues();
+        /*ContentValues cv = new ContentValues();
         cv.put(db.KROPPSDEL, "kasse");
         cv.put(db.ADRESSE, "..");
         cv.put(db.TDAG, 02);
         cv.put(db.TMAANED, 11);
         cv.put(db.TAAR, 2016);
 
-        db.insert(cv);
+        db.insert(cv);*/
 
         GridView gridView = (GridView) findViewById(R.id.ukesview);
-
-        String[] test = new String[]{"Test", "Hei", "Hade"};
 
         final List<String> dagListe = new ArrayList<String>();
         final ArrayAdapter<String> gridViewArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, dagListe);
@@ -55,17 +54,19 @@ public class MainActivity extends AppCompatActivity {
         Cursor cur = db.visalleDager();
         if(cur.moveToFirst()){
             do {
-                dagListe.add(dagListe.size(), cur.getString(2) + "." + getMnd(cur.getInt(3)) /*+ " " + cur.getString(1)*/);
+                dagListe.add(dagListe.size(), cur.getString(2) + "." + getMnd(cur.getInt(3)));
                 gridViewArrayAdapter.notifyDataSetChanged();
                 tallListe.add(cur.getInt(4));
             }while(cur.moveToNext());
         }
         cur.close();
 
+        final Context thisC = this;
+
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this, Endredag.class);
+                Intent intent = new Intent(thisC, Endredag.class);
                 intent.putExtra("Posnr", tallListe.get(position));
                 startActivity(intent);
             }
