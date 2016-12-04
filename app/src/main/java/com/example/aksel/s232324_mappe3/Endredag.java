@@ -47,7 +47,6 @@ public class Endredag extends AppCompatActivity {
             do {
                 okt.setText(cur.getString(0));
                 valg.setCurrentHour(cur.getInt(1));
-                Log.d("Time", ""+cur.getInt(1));
                 valg.setCurrentMinute(cur.getInt(2));
                 dato.updateDate(cur.getInt(5), cur.getInt(4), cur.getInt(3));
             }while(cur.moveToNext());

@@ -45,7 +45,7 @@ public class DBAdapter {
                     + ADRESSE + " TEXT, "
                     + TDAG + " TEXT, "
                     + TMAANED + " TEXT, "
-                    + TAAR + " TEXT)"; //kanskje fjerne år eller sette standard år til nåværende år
+                    + TAAR + " TEXT)";
             db.execSQL(sql);
         }
 
@@ -80,14 +80,12 @@ public class DBAdapter {
     }
 
     public Cursor visalleDager(){
-        Cursor cur;
         String[] cols={KROPPSDEL,TDAG,TMAANED,ID};
-        cur = db.query(TABELL, cols,null,null,null,null,TMAANED + " , " + TDAG);
+        Cursor cur = db.query(TABELL, cols,null,null,null,null,TMAANED + " , " + TDAG);
         return cur;
     }
 
     public Cursor finndag(int i){
-        Cursor cur;
         String[] cols = {KROPPSDEL, TIMEN, MINUTT, TDAG, TMAANED, TAAR};
         return db.query(TABELL, cols, ID + "='" + i + "'", null, null, null, null);
     }

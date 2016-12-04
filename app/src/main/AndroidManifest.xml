@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.aksel.s232324_mappe3">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/trening_ikon"
@@ -18,6 +22,10 @@
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".Endredag"
             android:parentActivityName=".MainActivity"/>
+        <activity android:name=".Instillinger"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".Lokasjon"
+            android:parentActivityName=".Lokasjon"/>
     </application>
 
 </manifest>
