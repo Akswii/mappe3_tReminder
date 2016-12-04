@@ -29,7 +29,7 @@ public class Leggtilokt extends AppCompatActivity {
     private DatePicker dato;
     private EditText okt;
     private DBAdapter db;
-    private int dag, maaned, timer, minutt;
+    private int dag, maaned, timer, minutt, aar;
     private String kroppsDel;
 
     @Override
@@ -62,6 +62,8 @@ public class Leggtilokt extends AppCompatActivity {
             case R.id.lagreokten:
                 dag = dato.getDayOfMonth();
                 maaned = dato.getMonth();
+                aar = dato.getYear();
+
                 kroppsDel = okt.getText().toString();
                 timer = valg.getCurrentHour();
                 minutt = valg.getCurrentMinute();
@@ -72,6 +74,7 @@ public class Leggtilokt extends AppCompatActivity {
                 cv.put(db.KROPPSDEL, kroppsDel);
                 cv.put(db.TDAG,dag);
                 cv.put(db.TMAANED, maaned);
+                cv.put(db.TAAR, aar);
                 cv.put(db.TIMEN, timer);
                 cv.put(db.MINUTT, minutt);
                 db.insert(cv);
