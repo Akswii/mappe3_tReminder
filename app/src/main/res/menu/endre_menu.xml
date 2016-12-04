@@ -13,4 +13,10 @@
         android:title="@string/slett"
         android:icon="@drawable/delete_icon"/>
 
+    <item
+        android:id="@+id/sjekkinn"
+        app:showAsAction="always"
+        android:title="@string/sjekkinn"
+        android:icon="@drawable/sjekk_inn"/>
+
 </menu>

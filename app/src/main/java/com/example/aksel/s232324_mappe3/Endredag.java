@@ -1,8 +1,10 @@
 package com.example.aksel.s232324_mappe3;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -22,9 +24,8 @@ public class Endredag extends AppCompatActivity {
     private TimePicker valg;
     private DatePicker dato;
     private EditText okt;
-    private String kroppsDel;
     private DBAdapter db;
-    private int iden,dag,maaned;
+    private int iden;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +84,7 @@ public class Endredag extends AppCompatActivity {
         int mnd = dato.getMonth();
         int dag = dato.getDayOfMonth();
         int aar = dato.getYear();
-        Intent intent = new Intent(this, MainActivity.class);
+        final Intent intent = new Intent(this, MainActivity.class);
 
 
         switch(item.getItemId()){
@@ -96,6 +97,33 @@ public class Endredag extends AppCompatActivity {
                 db.slett(iden);
                 Toast.makeText(this, "Økten er slettet!", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
+                return true;
+            case R.id.sjekkinn:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+                builder.setTitle("Bekreft");
+                builder.setMessage("Vil du sjekke inn og fjerne økten fra listen?");
+
+                builder.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        //ville lagt lokaliseringskoden her om den funket q.q
+                        db.slett(iden);
+                        startActivity(intent);
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.setNegativeButton("Nei", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                AlertDialog alert = builder.create();
+                alert.show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

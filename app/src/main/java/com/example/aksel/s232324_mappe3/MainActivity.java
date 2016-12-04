@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         DBAdapter db = new DBAdapter(this);
         db.open();
 
-        ContentValues cv = new ContentValues();
+        /*ContentValues cv = new ContentValues();
         cv.put(db.KROPPSDEL, "kasse");
         cv.put(db.TDAG, 02);
         cv.put(db.TMAANED, 11);
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         cv.put(db.TIMEN, 10);
         cv.put(db.MINUTT, 10);
 
-        db.insert(cv);
+        db.insert(cv);*/
 
         GridView gridView = (GridView) findViewById(R.id.ukesview);
 
