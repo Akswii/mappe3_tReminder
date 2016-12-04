@@ -15,7 +15,6 @@ public class DBAdapter {
     static final String TAG="";
     static final String DB_NAVN="Treningsdagbok";
     static final String TABELL="Persliste";
-    static final String ADRESSE="adresse";
     static final String KROPPSDEL = "kroppsdel";
     static final String TDAG="dag", TMAANED="maaned", TAAR="aar", TIMEN="time", MINUTT="minutt";
     static final String ID="id";
@@ -42,7 +41,6 @@ public class DBAdapter {
                     + KROPPSDEL + " TEXT, "
                     + TIMEN + " TEXT ,"
                     + MINUTT + " TEXT ,"
-                    + ADRESSE + " TEXT, "
                     + TDAG + " TEXT, "
                     + TMAANED + " TEXT, "
                     + TAAR + " TEXT)";
@@ -71,11 +69,14 @@ public class DBAdapter {
         return db.delete(TABELL, ID + "='" + id + "'", null) > 0;
     }
 
-    public boolean oppdaterDag(String tsenter, String dag, String maaned, int iden){
+    public boolean oppdaterDag(String kroppsdel, int dag, int maaned, int aar, int timen, int minutt, int iden){
         ContentValues cv = new ContentValues();
-        cv.put(ADRESSE, tsenter);
+        cv.put(KROPPSDEL, kroppsdel);
+        cv.put(TIMEN, timen);
+        cv.put(MINUTT, minutt);
         cv.put(TDAG, dag);
         cv.put(TMAANED, maaned);
+        cv.put(TAAR, aar);
         return db.update(TABELL,cv,ID+"="+"'"+iden+"'",null)>0;
     }
 

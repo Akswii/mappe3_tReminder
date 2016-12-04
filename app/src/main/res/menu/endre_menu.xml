@@ -2,13 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/Leggtil"
+        android:id="@+id/lagreokten"
         app:showAsAction="always"
-        android:title="leggtil"
-        android:icon="@drawable/legg_til"/>
+        android:title="@string/lagre"
+        android:icon="@drawable/lagre_bilde"/>
+
     <item
-        android:id="@+id/prefs"
+        android:id="@+id/slettokt"
         app:showAsAction="always"
-        android:title="preferanser"
-        android:icon="@drawable/inst_bilde"/>
+        android:title="@string/slett"
+        android:icon="@drawable/delete_icon"/>
+
 </menu>

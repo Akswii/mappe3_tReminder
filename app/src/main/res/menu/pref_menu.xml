@@ -5,5 +5,4 @@
         android:id="@+id/preflagre"
         app:showAsAction="always"
         android:title="lagre"/>
-
 </menu>

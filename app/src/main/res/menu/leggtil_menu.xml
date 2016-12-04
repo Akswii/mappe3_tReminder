@@ -7,5 +7,7 @@
     <item
         android:id="@+id/lagreokten"
         app:showAsAction="always"
-        android:title="LAGRE"/>
+        android:title="@string/lagre"
+        android:icon="@drawable/lagre_bilde"/>
+
 </menu>

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <EditTextPreference
-        android:title="TEMP"
+        android:title="@string/edit_tekst"
         android:key="tekst_inst"
-        android:summary="TEMP"/>
-
+        android:summary="@string/edit_tekst2"/>
 </PreferenceScreen>

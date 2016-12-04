@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
         ContentValues cv = new ContentValues();
         cv.put(db.KROPPSDEL, "kasse");
-        cv.put(db.ADRESSE, "..");
         cv.put(db.TDAG, 02);
         cv.put(db.TMAANED, 11);
         cv.put(db.TAAR, 2016);

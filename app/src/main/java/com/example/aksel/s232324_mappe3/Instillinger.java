@@ -7,6 +7,7 @@ import android.preference.PreferenceFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * Created by Aksel on 23/11/2016.
@@ -34,9 +35,8 @@ public class Instillinger extends AppCompatActivity {
             inst.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    Log.d("LOKASJON","" + lok.hentkoordinater(et.getText().toString()));
-                    Log.d("test", et.getText().toString());
-                    return false;
+                    Log.d("Skrevet senter ", et.getText().toString());
+                    return true;
                 }
             });
         }

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -60,7 +61,6 @@ public class Lokasjon extends AppCompatActivity {
                 if (conn.getResponseCode() != 200) {
                     throw new RuntimeException("Failed : HTTP error code: " + conn.getResponseCode());
                 }
-                Log.d("Lok", lokasjon+"");
                 BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
                 while ((s = br.readLine()) != null) {
                     output = output + s;
@@ -83,14 +83,11 @@ public class Lokasjon extends AppCompatActivity {
             } catch (Exception e) {
                 return "Noe gikk galt";
             }
-
-
         }
-
         @Override
         protected void onPostExecute(String resultat) {
             Log.d("Resultat", resultat);
-            lokasjon = resultat;
+            Toast.makeText(null, "Ny treningsøkt registrert!", Toast.LENGTH_SHORT).show();
         }
     }
 }
